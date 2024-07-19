@@ -4,6 +4,7 @@ function named index_range that takes two integer
 arguments page and page_size
 """
 
+
 def index_range(page, page_size):
     """
     Calculate the start and end index for pagination.
