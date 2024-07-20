@@ -31,7 +31,7 @@ class Server:
                 dataset = [row for row in reader]
             self.__dataset = dataset[1:]
 
-        return sself.__dataset
+        return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         """Retrieve a page of data from the dataset"""
