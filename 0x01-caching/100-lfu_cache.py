@@ -25,11 +25,13 @@ class LFUCache(BaseCaching):
             self.usage_order.remove(key)
         else:
             if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
-                lfu_keys = [k for k, v in self.frequency.items() if v == min(self.frequency.values())]
+                lfu_keys = [k for k, v in self.frequency.items() \
+                        if v == min(self.frequency.values())]
                 if len(lfu_keys) == 1:
                     lfu_key = lfu_keys[0]
                 else:
-                    lfu_key = min(lfu_keys, key=lambda k: self.usage_order.index(k))
+                    lfu_key = min(lfu_keys, \
+                            key=lambda k: self.usage_order.index(k))
                 del self.cache_data[lfu_key]
                 del self.frequency[lfu_key]
                 self.usage_order.remove(lfu_key)
