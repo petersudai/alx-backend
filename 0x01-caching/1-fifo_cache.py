@@ -4,6 +4,7 @@ class FIFOCache that inherits from BaseCaching and is a caching system
 """
 from base_caching import BaseCaching
 
+
 class FIFOCache(BaseCaching):
     """
     FIFOCache defines a FIFO caching system
@@ -17,7 +18,8 @@ class FIFOCache(BaseCaching):
     def put(self, key, item):
         """ Add an item in the cache """
         if key is not None and item is not None:
-            if key not in self.cache_data and len(self.cache_data) >= BaseCaching.MAX_ITEMS:
+            if key not in self.cache_data and len(self.cache_data) \
+                    >= BaseCaching.MAX_ITEMS:
                 oldest_key = self.order.pop(0)
                 del self.cache_data[oldest_key]
                 print(f"DISCARD: {oldest_key}")
