@@ -16,6 +16,7 @@ def index_range(page: int, page_size: int) -> tuple:
     end_index = start_index + page_size
     return (start_index, end_index)
 
+
 class Server:
     """Server class to paginate a database of popular baby names."""
     DATA_FILE = "Popular_Baby_Names.csv"
@@ -43,8 +44,10 @@ class Server:
         Returns:
         List[List]: A list of rows corresponding to the requested page.
         """
-        assert isinstance(page, int) and page > 0, "page must be an integer greater than 0"
-        assert isinstance(page_size, int) and page_size > 0, "page_size must be an integer greater than 0"
+        assert isinstance(
+            page, int) and page > 0, "page must be an integer greater than 0"
+        assert isinstance(
+            page_size, int) and page_size > 0, "page_size must be an integer greater than 0"
 
         start_index, end_index = index_range(page, page_size)
         dataset = self.dataset()
@@ -67,7 +70,8 @@ class Server:
         data = self.get_page(page, page_size)
         total_pages = math.ceil(len(self.dataset()) / page_size)
 
-        next_page = page + 1 if (page * page_size) < len(self.dataset()) else None
+        next_page = page + \
+            1 if (page * page_size) < len(self.dataset()) else None
         prev_page = page - 1 if page > 1 else None
 
         return {
